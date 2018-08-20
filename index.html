@@ -2,44 +2,74 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>UI</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=11">
+  <title>Poll component</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
-<body>
+
+  <script src="./public/node_modules/core-js/client/core.min.js"></script>
+  <script src="./public/node_modules/core-js/client/library.min.js"></script>
+  <script src="./public/node_modules/core-js/client/shim.min.js"></script>
+
+  <script src="./dist/polyfill.js"></script>
+
+  <script type="text/javascript" src="./public/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+
   <script>if (!window.customElements) { document.write('<!--'); }</script>
-  <script type="text/javascript" src="public/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
+  <script type="text/javascript" src="./public/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
   <!--! do not remove -->
 
-  <script src="dist/polyfill.js"></script>
-  <script src="dist/index.js"></script>
+  <link href="./dist/index.css" rel="stylesheet" />
+
+  <script src="./dist/index.js"></script>
+  <script src="./dist/poll.js"></script>
+
   <script>
-    var ReactionList = window.WCReactions.ReactionList
-    var withConfig = window.WCReactions.mixins.withConfig
+    function onLoad(){
+      const withStyleLink = window.WC.withStyleLink
+      const withPoll = window.WCPoll.mixins.withPoll
+      const combine = window.WCPoll.mixins.combineMixins
 
-    const configuration = new Map([
-      ['joy', {name: ':joy'}],
-      ['thumbsup', {name: ':thumbsup'}],
-      ['thumbsdown', {name: ':thumbsdown', count: 10}],
-    ])
+      const pollData = {
+        text: 'What\'s the largest desert in the World?',
+        total: 10,
+        list: [{
+          label: 'Sahara',
+          name: 'desert',
+          value: 'Sahara',
+          count: 5,
+        },{
+          label: 'Gobi',
+          name: 'desert',
+          value: 'Gobi',
+          count: 4,
+        },{
+          label: 'Karakum',
+          name: 'desert',
+          value: 'Karakum',
+          count: 1,
+        },{
+          label: 'Mojave',
+          name: 'desert',
+          value: 'Mojave',
+          count: 0
+        }],
+      }
 
-    window.customElements.define('reaction-list', withConfig(ReactionList, configuration));
+      const applyTo = combine([
+        [withStyleLink, './dist/poll.css'],
+        [withPoll, pollData]
+      ])
 
-    document.addEventListener('DOMContentLoaded', function(){
-      var rlist = window.document.getElementById('rlist')
+      window.customElements.define('wc-poll', applyTo(WC.Poll))
+    }
 
-      rlist.addEventListener('reactions-toggle', function(e){
-        const reaction = configuration.get(e.detail.reaction)
-
-        reaction.count = (reaction.count || 0) + 1
-        configuration.set(e.detail.reaction, reaction)
-
-        rlist._configure(configuration)
-      })
-
-    })
+    window.onload = onLoad
   </script>
-  <h2>Reactions</h2>
-  <reaction-list id="rlist" showall showcount></reaction-list>
+</head>
+<body>
+  <div style="width:50%;">
+    <h2>Poll</h2>
+    <wc-poll></wc-poll>
+  </div>
 </body>
 </html>

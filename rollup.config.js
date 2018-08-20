@@ -3,56 +3,74 @@ import autoprefixer from 'autoprefixer'
 import babel from 'rollup-plugin-babel'
 import cjs from 'rollup-plugin-commonjs'
 import copy from 'rollup-plugin-copy'
+import cssfonts from 'postcss-fontpath'
+import cssimport from 'postcss-import'
+import cssurl from 'postcss-url'
 import env from 'postcss-preset-env'
 import json from 'rollup-plugin-json'
+import nodeResolve from 'rollup-plugin-node-resolve'
 import postcss from 'rollup-plugin-postcss'
-import resolve from 'rollup-plugin-node-resolve'
 import svg from 'rollup-plugin-svg'
 
-const entry = process.env.entry || 'index'
+const entry = process.env.ENTRY || 'organisms/poll'
+const ns = process.env.NS || 'WC'
+
+const getModuleName = (it) => {
+  const cmpts = it.split('/')
+
+  return cmpts[cmpts.length === 1 ? 0 : (cmpts.length - 1)]
+}
+
+const cssPlugins = [
+  cssimport({
+    addModulesDirectories: ['node_modules'],
+  }),
+  cssurl({
+    url: 'inline',
+  }),
+  cssfonts(),
+  env(),
+  autoprefixer(),
+]
+
+// eslint-disable-next-line multiline-ternary
+const css = () => postcss(entry === 'embedded' ? {} : {
+  extract: true,
+  modules: true,
+  namedExports: function namedExports (name) {
+    return `_$${name.replace(/-/g, '_')}`
+    // return name.replace(/-/g, '$_$');
+  },
+  plugins: cssPlugins,
+})
 
 const commonPlugins = [
-  resolve(),
-  postcss({ plugins: [env(), autoprefixer()] }),
+  nodeResolve(),
   svg(),
+  css(),
   json(),
+  cjs(),
 ]
 
 const shouldUglify = () => process.env.NODE_ENV === 'production' ? [uglify()] : []
 
-const polyfill = () => ({
-  input: 'lib/polyfill.js',
-  output: {
-    file: 'dist/polyfill.js',
-    format: 'iife',
-  },
-  plugins: [
-    babel(),
-    copy({
-      'node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js': 'public/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js',
-    }),
-    resolve(),
-    shouldUglify(),
-  ],
-})
-
 const es = () => ({
   input: `lib/${entry}.js`,
   output: {
-    file: `es/${entry}.js`,
+    file: `es/${getModuleName(entry)}.js`,
     format: 'es',
   },
-  plugins: commonPlugins.concat([cjs({ extensions: ['.js', '.mjs'] })]),
+  plugins: commonPlugins,
 })
 
-const dist = (name = 'WCReactions') => ({
+const dist = (name = ns) => ({
   input: `lib/${entry}.js`,
   output: {
-    file: `dist/${entry}.js`,
+    file: `dist/${getModuleName(entry)}.js`,
     format: 'umd',
     name,
   },
-  plugins: commonPlugins.concat([cjs({ extensions: ['.js'] }), babel(), shouldUglify()]),
+  plugins: commonPlugins.concat([babel(), shouldUglify()]),
 })
 
-export default [polyfill(), es(), dist()]
+export default [es(), dist()]
