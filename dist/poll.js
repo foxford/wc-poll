@@ -2678,6 +2678,7 @@
           list: Array,
           multiple: Boolean,
           text: String,
+          users: Array,
           total: Number,
           selected: Boolean
         };
@@ -2689,6 +2690,7 @@
 
       var _this = possibleConstructorReturn(this, (PollElement.__proto__ || Object.getPrototypeOf(PollElement)).call(this, props));
 
+      _this.users = [];
       _this.selected = false;
       _this.list = [];
       _this.result = {
@@ -2781,7 +2783,9 @@
         var text = _ref.text,
             _ref$list = _ref.list,
             list = _ref$list === undefined ? [] : _ref$list,
-            selected = _ref.selected;
+            selected = _ref.selected,
+            users = _ref.users,
+            total = _ref.total;
 
         if (list.length) {
           // calculate most popular answer
@@ -2796,7 +2800,7 @@
         }
 
         var _button = button({
-          text: 'Проголосовать',
+          text: this.complete ? '\u041F\u0440\u043E\u0433\u043E\u043B\u043E\u0441\u043E\u0432\u0430\u043B\u043E ' + total + ' \u0438\u0437 ' + users.length : 'Проголосовать',
           disabled: !this.complete ? !selected : true
         });
 

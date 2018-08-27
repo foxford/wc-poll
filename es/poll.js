@@ -2162,6 +2162,7 @@ class PollElement extends LitElement {
       list: Array,
       multiple: Boolean,
       text: String,
+      users: Array,
       total: Number,
       selected: Boolean,
     }
@@ -2170,6 +2171,7 @@ class PollElement extends LitElement {
   constructor (props) {
     super(props);
 
+    this.users = [];
     this.selected = false;
     this.list = [];
     this.result = {
@@ -2256,7 +2258,7 @@ class PollElement extends LitElement {
   }
 
   _render ({
-    text, list = [], selected,
+    text, list = [], selected, users, total,
   }) {
     if (list.length) {
       // calculate most popular answer
@@ -2267,7 +2269,7 @@ class PollElement extends LitElement {
     }
 
     const _button = button({
-      text: 'Проголосовать',
+      text: this.complete ? `Проголосовало ${total} из ${users.length}` : 'Проголосовать',
       disabled: !this.complete ? !selected : true,
     });
 
