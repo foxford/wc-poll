@@ -73,6 +73,10 @@
   font-weight: bold;
 }
 
+.button_root__3QOnQ {
+  font-size: 16px;
+}
+
 .radio_root__37Zse.radio_root__37Zse {
   align-items: end;
   color: #333;
@@ -95,10 +99,6 @@ input[type="radio"]:checked {
 .radio_input__woZmG.radio_input__woZmG {
   display: inline;
   margin: 0;
-}
-
-.button_root__3QOnQ {
-  font-size: 16px;
 }
 
 .progress_root__2xqYW.progress_root__2xqYW {
@@ -225,6 +225,39 @@ input[type="radio"]:checked {
 .Radio_size-large__2XoL2 svg {
     width: 18px;
     height: 18px; }
+
+/**
+ * Screen breakpoints
+ *//**
+ * Mixins for responsive components
+ *//**
+ * Fonts
+ *//**
+ * Grid
+ */@-webkit-keyframes Progress_move__AxJFI {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: 50px 50px; } }@keyframes Progress_move__AxJFI {
+  0% {
+    background-position: 0 0; }
+  100% {
+    background-position: 50px 50px; } }.Progress_root__1L_Vc {
+  display: block;
+  height: 4px;
+  background-color: rgba(212, 212, 212, 0.4);
+  border-radius: 40px;
+  overflow: hidden; }.Progress_bar__3DB9M {
+  width: 0;
+  transition: 1s;
+  height: 100%;
+  border-radius: inherit;
+  color: inherit;
+  background-color: currentColor; }.Progress_loading__FftiY .Progress_bar__3DB9M {
+  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
+  background-size: 25px 25px;
+  -webkit-animation: Progress_move__AxJFI 2s linear infinite;
+          animation: Progress_move__AxJFI 2s linear infinite; }
 
 /**
  * Screen breakpoints
@@ -946,39 +979,6 @@ input[type="radio"]:checked {
   display: inline-block;
   line-height: 1;
   vertical-align: middle; }
-
-/**
- * Screen breakpoints
- *//**
- * Mixins for responsive components
- *//**
- * Fonts
- *//**
- * Grid
- */@-webkit-keyframes Progress_move__AxJFI {
-  0% {
-    background-position: 0 0; }
-  100% {
-    background-position: 50px 50px; } }@keyframes Progress_move__AxJFI {
-  0% {
-    background-position: 0 0; }
-  100% {
-    background-position: 50px 50px; } }.Progress_root__1L_Vc {
-  display: block;
-  height: 4px;
-  background-color: rgba(212, 212, 212, 0.4);
-  border-radius: 40px;
-  overflow: hidden; }.Progress_bar__3DB9M {
-  width: 0;
-  transition: 1s;
-  height: 100%;
-  border-radius: inherit;
-  color: inherit;
-  background-color: currentColor; }.Progress_loading__FftiY .Progress_bar__3DB9M {
-  background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.4) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.4) 50%, rgba(255, 255, 255, 0.4) 75%, transparent 75%, transparent);
-  background-size: 25px 25px;
-  -webkit-animation: Progress_move__AxJFI 2s linear infinite;
-          animation: Progress_move__AxJFI 2s linear infinite; }
 
 /**
  * Screen breakpoints

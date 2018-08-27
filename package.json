@@ -1,6 +1,6 @@
 {
   "name": "@netology-group/wc-poll",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "",
   "bugs": {
     "url": "https://github.com/netology-group/wc-reaction/issues"
@@ -21,9 +21,10 @@
     "lib": "lib"
   },
   "scripts": {
-    "prebuild": "rm -rf dist es fonts public/**",
+    "prebuild": "npm run cleanup && rollup -c rollup.config.polyfill.js",
+    "cleanup": "rm -rf dist es fonts public/**",
     "build": "NS=WCPoll ENTRY=index rollup -c && rollup -c",
-    "postbuild": "NS=WCEmbed ENTRY=embedded rollup -c && rollup -c rollup.config.polyfill.js",
+    "postbuild": "NS=WCEmbed ENTRY=embedded rollup -c",
     "demo": "http-server . -p ${DEMO_PORT:-9090}",
     "eslint": "eslint lib",
     "lint": "npm run lint && npm run stylelint",
