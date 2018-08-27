@@ -2758,7 +2758,10 @@
       key: '_renderResult',
       value: function _renderResult(data) {
         // eslint-disable-next-line no-param-reassign
-        data = _extends({}, data, { value: data.count / this.total });
+        data = _extends({}, data, { value: data.count / this.total
+
+          // eslint-disable-next-line no-param-reassign
+        });data.value = data.weight / 1e2 || data.value;
 
         var _result = function _result(_data, _css) {
           var _cs;

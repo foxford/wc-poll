@@ -2240,6 +2240,9 @@ class PollElement extends LitElement {
     // eslint-disable-next-line no-param-reassign
     data = { ...data, value: data.count / this.total };
 
+    // eslint-disable-next-line no-param-reassign
+    data.value = data.weight / 1e2 || data.value;
+
     const _result = (_data, _css) => html$1`
       <div class$=${classString({ [cn(_css.text)]: true, [_css.active]: data.winner })}>${_data.label}</div>
       <div class$=${cn(_css.aftertext)}>${parseFloat(_data.value * 1e2).toFixed(1)}%</div>
