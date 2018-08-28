@@ -1,6 +1,6 @@
 {
   "name": "@netology-group/wc-poll",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "",
   "bugs": {
     "url": "https://github.com/netology-group/wc-reaction/issues"
@@ -21,17 +21,17 @@
     "lib": "lib"
   },
   "scripts": {
-    "prebuild": "npm run cleanup && rollup -c rollup.config.polyfill.js",
-    "cleanup": "rm -rf dist es fonts public/**",
-    "build": "NS=WCPoll ENTRY=index rollup -c && rollup -c",
-    "postbuild": "NS=WCEmbed ENTRY=embedded rollup -c",
+    "prebuild": "npm run cleanup && npm run build:polyfill && npm run build:es",
+    "build": "SKIPCSS=1 ENTRY=dist rollup -c rollup.umd.js",
+    "build:es": "ENTRY=organisms/poll rollup -c rollup.es.js",
+    "build:polyfill": "rollup -c rollup.polyfill.js",
+    "cleanup": "rm -rf dist es public/node_modules public/fonts",
     "demo": "http-server . -p ${DEMO_PORT:-9090}",
     "eslint": "eslint lib",
-    "lint": "npm run lint && npm run stylelint",
     "prepare": "npm run build",
     "start": "npm run demo",
     "stylelint": "stylelint lib",
-    "test": "npm run lint"
+    "test": "npm run eslint && npm run stylelint"
   },
   "stylelint": {
     "extends": [
@@ -54,7 +54,7 @@
   },
   "dependencies": {
     "@fxf/ui": "github:netology-group/foxford-ui#master",
-    "@netology-group/wc-utils": "^0.1.0",
+    "@netology-group/wc-utils": "github:netology-group/wc-utils#master",
     "@polymer/lit-element": "^0.5.2",
     "@webcomponents/webcomponentsjs": "^2.1.0",
     "core-js": "^2.5.7",

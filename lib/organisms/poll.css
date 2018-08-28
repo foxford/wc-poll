@@ -5,6 +5,21 @@
   display: block;
   min-width: var(--poll-min-width, 400px);
   padding: 20px;
+  position: relative;
+}
+
+.edit {
+  border: 1px dashed var(--poll-edit-border-color, var(--persimmon, #ff7256));
+}
+
+.actions {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.actions > * {
+  cursor: pointer;
 }
 
 .image,

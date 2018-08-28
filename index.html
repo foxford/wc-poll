@@ -18,18 +18,16 @@
   <script type="text/javascript" src="./public/node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js"></script>
   <!--! do not remove -->
 
-  <link href="./dist/index.css" rel="stylesheet" />
+  <link href="./public/fonts.css" rel="stylesheet" />
 
-  <script src="./dist/index.js"></script>
-  <script src="./dist/poll.js"></script>
+  <script src="./dist/dist.js"></script>
 
   <script>
-    function onLoad(){
-      const withStyleLink = window.WC.withStyleLink
-      const withPoll = window.WCPoll.mixins.withPoll
-      const combine = window.WCPoll.mixins.combineMixins
+    window.onload = function onLoad(){
+      var mixins = window.WCPoll.mixins
+      var Poll = window.WCPoll.Poll
 
-      const pollData = {
+      var pollData = {
         text: 'What\'s the largest desert in the World?',
         total: 10,
         list: [{
@@ -56,15 +54,12 @@
         users: Array(12)
       }
 
-      const applyTo = combine([
-        [withStyleLink, './dist/poll.css'],
-        [withPoll, pollData]
+      var applyTo = mixins.combineMixins([
+        [mixins.withPoll, pollData]
       ])
 
-      window.customElements.define('wc-poll', applyTo(WC.Poll))
+      window.customElements.define('wc-poll', applyTo(Poll))
     }
-
-    window.onload = onLoad
   </script>
 </head>
 <body>
@@ -73,7 +68,7 @@
     <wc-poll></wc-poll>
   </div>
   <div style="width:50%;">
-    <h2>Poll</h2>
+    <h2>Poll with multiple variants</h2>
     <wc-poll multiple></wc-poll>
   </div>
 </body>
