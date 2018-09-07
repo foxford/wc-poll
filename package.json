@@ -53,8 +53,8 @@
     }
   },
   "dependencies": {
-    "@fxf/ui": "github:netology-group/foxford-ui#master",
-    "@netology-group/wc-utils": "github:netology-group/wc-utils#master",
+    "@foxford/ui": "^1.0.3",
+    "@netology-group/wc-utils": "^0.2.1",
     "@polymer/lit-element": "^0.5.2",
     "@webcomponents/webcomponentsjs": "^2.1.0",
     "core-js": "^2.5.7",

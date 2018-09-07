@@ -27,12 +27,6 @@ const uglifyOptions = {
 
 const shouldUglify = (options = uglifyOptions, minifier) => process.env.NODE_ENV === 'production' ? uglify(options, minifier) : []
 
-const getModuleName = (it) => {
-  const cmpts = it.split('/')
-
-  return cmpts[cmpts.length === 1 ? 0 : (cmpts.length - 1)]
-}
-
 // eslint-disable-next-line multiline-ternary
 const css = () => postcss(noCssTransform ? {} : {
   extract: true,
@@ -71,7 +65,7 @@ const copyPublicModules = (entries = []) => entries.reduce((acc, it) => {
 export const es = entry => ({
   input: `lib/${entry}.js`,
   output: {
-    file: `es/${getModuleName(entry)}.js`,
+    file: `es/${entry}.js`,
     format: 'es',
   },
   plugins: commonPlugins,
@@ -80,7 +74,7 @@ export const es = entry => ({
 export const dist = (entry, name = ns) => ({
   input: `lib/${entry}.js`,
   output: {
-    file: `dist/${getModuleName(entry)}.js`,
+    file: `dist/${entry}.js`,
     format: 'umd',
     name,
   },
