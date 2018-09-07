@@ -28,7 +28,7 @@
     "cleanup": "rm -rf dist es public/node_modules public/fonts",
     "demo": "http-server . -p ${DEMO_PORT:-9090}",
     "eslint": "eslint lib",
-    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "start": "npm run demo",
     "stylelint": "stylelint lib",
     "test": "npm run eslint && npm run stylelint"
