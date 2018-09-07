@@ -1,6 +1,6 @@
 {
   "name": "@netology-group/wc-poll",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "bugs": {
     "url": "https://github.com/netology-group/wc-reaction/issues"
@@ -12,23 +12,22 @@
   "author": "",
   "files": [
     "es",
-    "lib",
-    "dist",
-    "fonts"
+    "dist"
   ],
-  "main": "lib",
+  "main": "lib/dist.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "prebuild": "npm run cleanup && npm run build:polyfill && npm run build:es",
-    "build": "SKIPCSS=1 ENTRY=dist rollup -c rollup.umd.js",
+    "build": "npm run build:es && npm run build:umd && npm run build:polyfill",
     "build:es": "ENTRY=organisms/poll rollup -c rollup.es.js",
     "build:polyfill": "rollup -c rollup.polyfill.js",
+    "build:umd": "SKIPCSS=1 ENTRY=dist rollup -c rollup.umd.js",
     "cleanup": "rm -rf dist es public/node_modules public/fonts",
     "demo": "http-server . -p ${DEMO_PORT:-9090}",
     "eslint": "eslint lib",
-    "prepublishOnly": "npm run build",
+    "prepublishOnly": "npm run test && npm run build",
     "start": "npm run demo",
     "stylelint": "stylelint lib",
     "test": "npm run eslint && npm run stylelint"
