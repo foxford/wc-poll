@@ -1,3 +1,3 @@
 .root {
-  color: var(--separator-color, var(--theme-color-concrete, #e6e6e6));
+  color: var(--poll-separator-color, var(--concrete, #e6e6e6));
 }

@@ -1,6 +1,6 @@
 .root.root {
   align-items: end;
-  color: var(--poll-border-color, var(--theme-concrete, #333));
+  color: var(--poll-radio-color, var(--concrete, #333));
 }
 
 input[type="radio"] {

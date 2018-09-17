@@ -57,12 +57,12 @@
 }
 
 .aftertext {
-  color: var(--result-active-color, var(--pictonBlue, #48a1e6));
+  color: var(--poll-result-color-active, var(--pictonBlue, #48a1e6));
   font-weight: 100;
   right: 16px;
 }
 
 .active {
-  color: var(--result-active-color, var(--pictonBlue, #48a1e6));
+  color: var(--poll-result-color-active, var(--pictonBlue, #48a1e6));
   font-weight: bold;
 }
