@@ -1,6 +1,6 @@
 {
   "name": "@netology-group/wc-poll",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "",
   "bugs": {
     "url": "https://github.com/netology-group/wc-reaction/issues"
@@ -14,20 +14,22 @@
     "es",
     "dist"
   ],
-  "main": "lib/dist.js",
+  "main": "dist/dist.min.js",
   "directories": {
     "lib": "lib"
   },
   "scripts": {
     "prebuild": "npm run cleanup && npm run build:polyfill && npm run build:es",
-    "build": "npm run build:es && npm run build:umd && npm run build:polyfill",
-    "build:es": "ENTRY=organisms/poll rollup -c rollup.es.js",
+    "build": "npm run build:es && npm run build:umd && npm run build:umd:min && npm run build:polyfill",
+    "build:es": "cross-env ENTRY=organisms/poll rollup -c rollup.es.js",
     "build:polyfill": "rollup -c rollup.polyfill.js",
-    "build:umd": "SKIPCSS=1 ENTRY=dist rollup -c rollup.umd.js",
+    "build:umd": "npm run rollup:umd -- -o dist/dist.js",
+    "build:umd:min": "cross-env NODE_ENV=production npm run rollup:umd -- -o dist/dist.min.js",
     "cleanup": "rm -rf dist es public/node_modules public/fonts",
     "demo": "http-server . -p ${DEMO_PORT:-9090}",
     "eslint": "eslint lib",
     "prepublishOnly": "npm run test && npm run build",
+    "rollup:umd": "cross-env SKIPCSS=1 ENTRY=dist rollup -c rollup.umd.js",
     "start": "npm run demo",
     "stylelint": "stylelint lib",
     "test": "npm run eslint && npm run stylelint"
@@ -69,6 +71,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.2.0",
     "eslint-config-adequate": "^1.1.1",
     "node-sass": "^4.9.3",
     "postcss": "^7.0.2",
