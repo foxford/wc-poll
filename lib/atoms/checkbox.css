@@ -1,8 +1,15 @@
+.root {
+  cursor: pointer;
+}
+
 input[type="checkbox"] {
   background: url('../images/checkbox.svg') no-repeat;
-  cursor: pointer;
+  cursor: inherit;
+  display: inline-block;
   height: 20px;
   outline: none;
+  position: relative;
+  top: 4px;
   width: 20px;
 }
 
