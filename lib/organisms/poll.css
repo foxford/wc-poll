@@ -45,24 +45,45 @@
 .text,
 .aftertext {
   bottom: 6px;
-  color: #333;
+  color: var(--mineShaft, #333);
   font-size: 16px;
   line-height: 16px;
   position: absolute;
   z-index: 100;
 }
 
-.text {
-  left: 20px;
-}
-
 .aftertext {
-  color: var(--poll-result-color-active, var(--pictonBlue, #48a1e6));
-  font-weight: 100;
+  font-weight: var(--poll-result-aftertext-font-weight, 100);
   right: 16px;
 }
 
-.active {
-  color: var(--poll-result-color-active, var(--pictonBlue, #48a1e6));
-  font-weight: bold;
+.text {
+  font-weight: var(--poll-result-text-font-weight, normal);
+  left: 20px;
+}
+
+.text.active,
+.aftertext.active {
+  color: var(--poll-result-color-active, var(--mineShaft, #333));
+}
+
+.aftertext.active {
+  font-weight: var(--poll-result-aftertext-font-weight-active, initial);
+}
+
+.text.active {
+  font-weight: var(--poll-result-text-font-weight-active, initial);
+}
+
+.text.selected,
+.aftertext.selected {
+  color: var(--poll-result-color-selected, var(--curiousBlue, #258cdc));
+}
+
+.aftertext.selected {
+  font-weight: var(--poll-result-aftertext-font-weight-selected, initial);
+}
+
+.text.selected {
+  font-weight: var(--poll-result-text-font-weight-selected, initial);
 }

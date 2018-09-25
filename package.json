@@ -1,6 +1,6 @@
 {
   "name": "@netology-group/wc-poll",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "",
   "bugs": {
     "url": "https://github.com/netology-group/wc-reaction/issues"
@@ -52,7 +52,7 @@
     }
   },
   "dependencies": {
-    "@foxford/ui": "^1.0.3",
+    "@foxford/ui": "^1.1.0",
     "@netology-group/wc-utils": "^0.2.1",
     "@polymer/lit-element": "^0.5.2",
     "@webcomponents/webcomponentsjs": "^2.1.0",
