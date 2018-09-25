@@ -54,11 +54,19 @@
         users: Array(12)
       }
 
+      var pollData2 = Object.assign({}, pollData)
+      pollData2.list = pollData2.list.map(it => { const next = Object.assign({}, it); next.name = `${next.name}_1`; next.label = `${next.label}_1`; return next })
+
       var applyTo = mixins.combineMixins([
         [mixins.withPoll, pollData]
       ])
 
+      var applyToMultiple = mixins.combineMixins([
+        [mixins.withPoll, pollData2]
+      ])
+
       window.customElements.define('wc-poll', applyTo(Poll))
+      window.customElements.define('wc-poll-multiple', applyToMultiple(Poll))
     }
   </script>
 </head>
@@ -69,7 +77,7 @@
   </div>
   <div style="width:50%;">
     <h2>Poll with multiple variants</h2>
-    <wc-poll multiple></wc-poll>
+    <wc-poll-multiple multiple></wc-poll-multiple>
   </div>
 </body>
 </html>
