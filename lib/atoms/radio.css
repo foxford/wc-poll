@@ -1,6 +1,6 @@
 :root {
-  --font-size: var(--poll-font-size, initial);
-  --radio-color: var(--poll-radio-color, var(--concrete, #333));
+  --font-size: var(--wc-poll-font-size, initial);
+  --radio-color: var(--wc-poll-radio-color, var(--concrete, #333));
 }
 
 .root.root {
@@ -10,7 +10,7 @@
 }
 
 .label.label {
-  font-size: var(--poll-variant-radio-font-size, inherit);
+  font-size: var(--wc-poll-variant-radio-font-size, inherit);
   margin-left: 10px;
 }
 

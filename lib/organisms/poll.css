@@ -1,15 +1,15 @@
 :root {
-  --backgroud-color: var(--poll-bg-color, var(--white, #fff));
-  --border-color-edit: var(--poll-edit-border-color, var(--persimmon, #ff7256));
-  --border-color: var(--poll-border-color, var(--mercury, #e9e9e9));
-  --font-size: var(--poll-font-size, initial);
-  --line-height: var(--poll-line-height, 1.2em);
-  --min-width: var(--poll-min-width, 400px);
-  --text-color: var(--poll-text-color, var(--mineShaft, #333));
-  --text-size: var(--poll-text-size, 1em);
-  --margin: var(--poll-margin, initial);
-  --border: var(--poll-border, 1px solid var(--border-color));
-  --border-edit: var(--poll-border-edit, 1px dashed var(--border-color-edit));
+  --backgroud-color: var(--wc-poll-bg-color, var(--white, #fff));
+  --border-color-edit: var(--wc-poll-edit-border-color, var(--persimmon, #ff7256));
+  --border-color: var(--wc-poll-border-color, var(--mercury, #e9e9e9));
+  --font-size: var(--wc-poll-font-size, initial);
+  --line-height: var(--wc-poll-line-height, 1.2em);
+  --min-width: var(--wc-poll-min-width, 400px);
+  --text-color: var(--wc-poll-text-color, var(--mineShaft, #333));
+  --text-size: var(--wc-poll-text-size, 1em);
+  --margin: var(--wc-poll-margin, initial);
+  --border: var(--wc-poll-border, 1px solid var(--border-color));
+  --border-edit: var(--wc-poll-border-edit, 1px dashed var(--border-color-edit));
 }
 
 .root {
@@ -68,14 +68,14 @@
 }
 
 .aftertext {
-  font-weight: var(--poll-result-aftertext-font-weight, 100);
+  font-weight: var(--wc-poll-result-aftertext-font-weight, 100);
   position: absolute;
   right: 16px;
   top: 9px;
 }
 
 .text {
-  font-weight: var(--poll-result-text-font-weight, normal);
+  font-weight: var(--wc-poll-result-text-font-weight, normal);
   margin-left: 20px;
   margin-right: 70px;
   margin-top: 8px;
@@ -83,26 +83,26 @@
 
 .text.active,
 .aftertext.active {
-  color: var(--poll-result-color-active, var(--mineShaft, #333));
+  color: var(--wc-poll-result-color-active, var(--mineShaft, #333));
 }
 
 .aftertext.active {
-  font-weight: var(--poll-result-aftertext-font-weight-active, initial);
+  font-weight: var(--wc-poll-result-aftertext-font-weight-active, initial);
 }
 
 .text.active {
-  font-weight: var(--poll-result-text-font-weight-active, initial);
+  font-weight: var(--wc-poll-result-text-font-weight-active, initial);
 }
 
 .text.selected,
 .aftertext.selected {
-  color: var(--poll-result-color-selected, var(--curiousBlue, #258cdc));
+  color: var(--wc-poll-result-color-selected, var(--curiousBlue, #258cdc));
 }
 
 .aftertext.selected {
-  font-weight: var(--poll-result-aftertext-font-weight-selected, initial);
+  font-weight: var(--wc-poll-result-aftertext-font-weight-selected, initial);
 }
 
 .text.selected {
-  font-weight: var(--poll-result-text-font-weight-selected, initial);
+  font-weight: var(--wc-poll-result-text-font-weight-selected, initial);
 }
