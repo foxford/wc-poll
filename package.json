@@ -30,6 +30,7 @@
     "eslint": "eslint lib",
     "prepublishOnly": "npm run test && npm run build",
     "rollup:umd": "cross-env SKIPCSS=1 ENTRY=dist rollup -c rollup.umd.js",
+    "prestart": "npm run build",
     "start": "npm run demo",
     "stylelint": "stylelint lib",
     "test": "npm run eslint && npm run stylelint"
