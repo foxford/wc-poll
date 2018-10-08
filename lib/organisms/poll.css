@@ -7,21 +7,25 @@
   --min-width: var(--poll-min-width, 400px);
   --text-color: var(--poll-text-color, var(--mineShaft, #333));
   --text-size: var(--poll-text-size, 1em);
+  --margin: var(--poll-margin, initial);
+  --border: var(--poll-border, 1px solid var(--border-color));
+  --border-edit: var(--poll-border-edit, 1px dashed var(--border-color-edit));
 }
 
 .root {
   background: var(--backgroud-color);
-  border: 1px solid var(--border-color) !important;
+  border: var(--border);
   border-radius: 5px;
   display: block;
   font-size: var(--font-size);
+  margin: var(--margin);
   min-width: var(--min-width);
   padding: 20px;
   position: relative;
 }
 
 .edit {
-  border: 1px dashed var(--border-color-edit);
+  border: var(--border-edit);
 }
 
 .actions {
