@@ -1,6 +1,6 @@
 {
   "name": "@netology-group/wc-poll",
-  "version": "0.3.1",
+  "version": "0.4.1",
   "description": "",
   "bugs": {
     "url": "https://github.com/netology-group/wc-reaction/issues"
@@ -30,6 +30,7 @@
     "eslint": "eslint lib",
     "prepublishOnly": "npm run test && npm run build",
     "rollup:umd": "cross-env SKIPCSS=1 ENTRY=dist rollup -c rollup.umd.js",
+    "prestart": "npm run build",
     "start": "npm run demo",
     "stylelint": "stylelint lib",
     "test": "npm run eslint && npm run stylelint"

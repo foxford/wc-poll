@@ -1,21 +1,61 @@
-.root.root {
-  align-items: end;
-  color: var(--poll-radio-color, var(--concrete, #333));
+:root {
+  --font-size: var(--wc-poll-font-size, initial);
+  --radio-color: var(--wc-poll-radio-color, var(--concrete, #333));
 }
 
-input[type="radio"] {
-  background: url('../images/radio.svg') no-repeat center center;
+.root.root {
+  align-items: normal;
+  color: var(--radio-color);
+  font-size: var(--font-size);
+}
+
+.label.label {
+  font-size: var(--wc-poll-variant-radio-font-size, inherit);
+  margin-left: 10px;
+}
+
+input[type="radio"] ~ svg {
   cursor: pointer;
   height: 20px;
   outline: none;
+  top: 0;
   width: 20px;
 }
 
-input[type="radio"]:checked {
-  background-image: url('../images/radio-checked.svg');
+/* redefine ui kit filling */
+
+.root.root svg:nth-child(2) path {
+  fill: var(--white, #fff);
 }
 
-.input.input {
+.root.root svg:nth-child(3) path {
+  fill: var(--pictonBlue, #48a1e6);
+}
+
+.root.root svg:nth-child(3) path:last-child {
+  fill: var(--white, #fff);
+}
+
+/* eof redefine */
+
+input[type="radio"] ~ svg:nth-child(3) {
+  display: none;
+}
+
+input[type="radio"]:hover ~ svg:nth-child(2),
+input[type="radio"]:checked ~ svg:nth-child(3) {
+  filter: drop-shadow(0 4px 4px rgba(72, 161, 230, 0.2));
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+input[type="radio"]:hover ~ svg:nth-child(2) path {
+  stroke: var(--pictonBlue, #48a1e6);
+}
+
+input[type="radio"]:checked ~ svg:nth-child(2) {
+  display: none;
+}
+
+input[type="radio"]:checked ~ svg:nth-child(3) {
   display: inline;
-  margin: 0;
 }
