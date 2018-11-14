@@ -1,12 +1,12 @@
 {
   "name": "@netology-group/wc-poll",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "",
   "bugs": {
-    "url": "https://github.com/netology-group/wc-reaction/issues"
+    "url": "https://github.com/netology-group/wc-poll/issues"
   },
   "repository": {
-    "url": "https://github.com/netology-group/wc-reaction"
+    "url": "https://github.com/netology-group/wc-poll"
   },
   "license": "MIT",
   "author": "",
