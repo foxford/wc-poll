@@ -2,14 +2,6 @@
 
 ### Define module
 
-#### ES
-```html
-<script type="module">
-  import { Poll } from '@netology-group/wc-poll/es/poll.js';
-  window.customElements.define('wc-poll', Poll);
-</script>
-```
-
 #### UMD
 ```html
 <script src="pathto/dist/polyfill.js"></script>
@@ -56,7 +48,6 @@
 ```sh
 npm start
 # generic version: http://127.0.0.1:9090
-# embedded version: http://127.0.0.1:9090/embedded.html
 ```
 
 ### Run for development
