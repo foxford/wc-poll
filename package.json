@@ -58,7 +58,8 @@
         "at-rules"
       ],
       "order/properties-alphabetical-order": false
-    }
+    },
+    "ignoreFiles": "*/images/*"
   },
   "dependencies": {
     "@foxford/ui": "^1.2.1",
