@@ -1,19 +1,17 @@
 import { html } from '@polymer/lit-element'
-
-import ui from '@foxford/ui/es/components/Button/Button.sass'
+import uiButton from '@foxford/ui/es/components/Button/Button.sass'
 
 import { cn } from '../utils'
-
-import css from './button.css'
+import style from '../atoms/button.css'
 
 const buttonCls = cn(
-  css.root,
-  ui.root,
-  ui.rounded,
-  ui['fluid-m'],
-  ui['height-52'],
-  ui['theme-default'],
-  ui['width-s'],
+  'button',
+  uiButton.root,
+  uiButton.rounded,
+  uiButton['fluid-m'],
+  uiButton['height-52'],
+  uiButton['theme-default'],
+  uiButton['width-s'],
 )
 
 export const button = ({
@@ -21,11 +19,13 @@ export const button = ({
   forEl,
   onclick,
   text = '',
-}) => html`
+}) => (html`
   <button
-    disabled=${disabled}
-    class$=${!disabled ? buttonCls : cn(buttonCls, ui.disabled, css.disabled)}
-    form=${forEl}
-    on-click=${onclick}
+    disabled='${disabled}'
+    class$='${!disabled ? buttonCls : cn(buttonCls, 'disabled', uiButton.disabled)}'
+    form$='${forEl}'
+    on-click='${onclick}'
   >${text}</button>
-`
+`)
+
+export { style }

@@ -1,31 +1,25 @@
 :root {
-  --backgroud-color: var(--wc-poll-bg-color, var(--white, #fff));
-  --border-color-edit: var(--wc-poll-edit-border-color, var(--persimmon, #ff7256));
-  --border-color: var(--wc-poll-border-color, var(--mercury, #e9e9e9));
-  --font-size: var(--wc-poll-font-size, initial);
-  --line-height: var(--wc-poll-line-height, 1.2em);
-  --min-width: var(--wc-poll-min-width, 400px);
-  --text-color: var(--wc-poll-text-color, var(--mineShaft, #333));
-  --text-size: var(--wc-poll-text-size, 1em);
-  --margin: var(--wc-poll-margin, initial);
-  --border: var(--wc-poll-border, 1px solid var(--border-color));
-  --border-edit: var(--wc-poll-border-edit, 1px dashed var(--border-color-edit));
+  --font-size: initial;
+  --line-height: 1.2em;
+  --font-size: initial;
+  --min-width: 400px;
+  --text-size: 1em;
 }
 
-.root {
-  background: var(--backgroud-color);
-  border: var(--border);
+.poll {
+  background: var(--wc-poll-bg-color, var(--white, #fff));
+  border: var(--wc-poll-border, 1px solid var(--wc-poll-border-color, var(--mercury, #e9e9e9)));
   border-radius: 5px;
   display: block;
-  font-size: var(--font-size);
-  margin: var(--margin);
-  min-width: var(--min-width);
+  font-size: var(--wc-poll-font-size, var(--font-size));
+  margin: var(--wc-poll-margin, initial);
+  min-width: var(--wc-poll-min-width, var(--min-width));
   padding: 20px;
   position: relative;
 }
 
 .edit {
-  border: var(--border-edit);
+  border: var(--wc-poll-border-edit, 1px dashed var(--wc-poll-edit-border-color, var(--persimmon, #ff7256)));
 }
 
 .actions {
@@ -60,9 +54,10 @@
 
 .text,
 .aftertext {
-  color: var(--text-color);
-  font-size: var(--text-size);
-  line-height: var(--line-height);
+  color: var(--wc-poll-text-color, var(--mineShaft, #333));
+  font-size: var(--wc-poll-text-size, var(--text-size));
+  line-height: var(--wc-poll-line-height, var(--line-height));
+  padding-bottom: 3px;
   position: relative;
   z-index: 100;
 }

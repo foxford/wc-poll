@@ -1,8 +1,8 @@
 import { html, classString as cs } from '@polymer/lit-element'
-import ui from '@foxford/ui/es/components/Progress/Progress.sass'
+import uiProgress from '@foxford/ui/es/components/Progress/Progress.sass'
 
 import { cn } from '../utils'
-import css from '../atoms/progress.css'
+import style from '../atoms/progress.css'
 
 export const progress = ({
   active,
@@ -11,9 +11,10 @@ export const progress = ({
   selected,
   width,
 }) => (html`
-  <div class$='${cn(css.root, ui.root, classname, cs({ [css.active]: active, [css.selected]: selected }))}'>
+  <div class$='${cn('progress', uiProgress.root, classname, cs({ active, selected }))}'>
     ${children}
-    <div class$='${cn(css.bar, ui.bar)}' style='width: ${width}%;'></div>
+    <div class$='${cn('bar', uiProgress.bar)}' style$='width: ${width}%;'></div>
   </div>
 `)
 
+export { style }

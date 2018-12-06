@@ -1,8 +1,8 @@
 import { html } from '@polymer/lit-element'
-import ui from '@foxford/ui/es/components/Radio/Radio.sass'
+import uiRadio from '@foxford/ui/es/components/Radio/Radio.sass'
 
 import { cn } from '../utils'
-import css from '../atoms/radio.css'
+import style from '../atoms/radio.css'
 import { radio as radiosvg, radioChecked as chkradiosvg } from '../images'
 
 export const radio = ({
@@ -13,17 +13,19 @@ export const radio = ({
   name = '',
   value = '',
 }) => (html`
-  <label class$='${cn(ui.root, ui['size-medium'], css.root)}' for$='${label}'>
+  <label class$='${cn('radio', uiRadio.root, uiRadio['size-medium'])}' for='${label}'>
     <input
       checked$='${checked}'
-      class$='${cn(ui.input, css.input, classname)}'
-      id$='${label}'
-      name$='${name}'
+      class$='${cn('input', uiRadio.input, classname)}'
+      id='${label}'
+      name='${name}'
       type='radio'
-      value='${value}'
+      value$='${value}'
     />
     ${radiosvg}
     ${chkradiosvg}
-    ${(label || children) && html`<span class$='${cn(ui.label, css.label)}'>${label || children}</span>`}
+    ${(label || children) && html`<span class$='${cn('label', uiRadio.label)}'>${label || children}</span>`}
   </label>
 `)
+
+export { style }

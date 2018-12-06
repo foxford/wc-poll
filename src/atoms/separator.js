@@ -1,17 +1,18 @@
 import { html } from '@polymer/lit-element'
-import ui from '@foxford/ui/es/components/Separator/Separator.sass'
+import uiSeparator from '@foxford/ui/es/components/Separator/Separator.sass'
 
 import { cn } from '../utils'
-
-import css from './separator.css'
+import style from '../atoms/separator.css'
 
 const cls = classname => cn(
   classname,
-  css.root,
-  ui.root,
-  ui['weight-1']
+  'separator',
+  uiSeparator.root,
+  uiSeparator['weight-1']
 )
 
-export const separator = (props = {}) => html`
-    <div class$=${cls(props.classname)}></div>
-  `
+export const separator = (props = {}) => (html`
+  <div class$='${cls(props.classname)}'></div>
+`)
+
+export { style }
