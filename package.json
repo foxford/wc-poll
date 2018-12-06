@@ -83,6 +83,7 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-3": "^6.24.1",
     "cross-env": "^5.2.0",
+    "cssnano": "^4.1.7",
     "eslint-config-adequate": "^1.1.1",
     "node-sass": "^4.9.3",
     "postcss": "^7.0.2",

@@ -3,6 +3,7 @@ import babel from 'rollup-plugin-babel'
 import cjs from 'rollup-plugin-commonjs'
 import cssfonts from 'postcss-fontpath'
 import cssimport from 'postcss-import'
+import cssnano from 'cssnano'
 import cssurl from 'postcss-url'
 import env from 'postcss-preset-env'
 import json from 'rollup-plugin-json'
@@ -26,7 +27,7 @@ const css = () => postcss({
     cssfonts(),
     env(),
     autoprefixer(),
-  ],
+  ].concat(process.env.NODE_ENV === 'production' ? cssnano() : []),
   loaders: [
     {
       name: 'postcss',
