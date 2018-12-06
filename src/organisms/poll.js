@@ -104,7 +104,7 @@ export class PollElement extends LitElement {
     const variantEl = this.multiple ? checkbox : radio
 
     return (html`
-      <div class$='${cn(uiPadMarg['margin-bottom-12'])}' on-change='${this._boundVariantChange}'>
+      <div on-change='${this._boundVariantChange}'>
         ${variantEl(data)}
       </div>
     `)

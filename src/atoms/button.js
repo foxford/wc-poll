@@ -1,5 +1,6 @@
 import { html } from '@polymer/lit-element'
 import uiButton from '@foxford/ui/es/components/Button/Button.sass'
+import uiPadMarg from '@foxford/ui/es/enhancers/PadMarg/PadMarg.sass'
 
 import { cn } from '../utils'
 import style from '../atoms/button.css'
@@ -20,12 +21,14 @@ export const button = ({
   onclick,
   text = '',
 }) => (html`
-  <button
-    disabled='${disabled}'
-    class$='${!disabled ? buttonCls : cn(buttonCls, 'disabled', uiButton.disabled)}'
-    form$='${forEl}'
-    on-click='${onclick}'
-  >${text}</button>
+  <div class$='${uiPadMarg['margin-top-12']}'>
+    <button
+      disabled='${disabled}'
+      class$='${!disabled ? buttonCls : cn(buttonCls, 'disabled', uiButton.disabled)}'
+      form$='${forEl}'
+      on-click='${onclick}'
+    >${text}</button>
+  </div>
 `)
 
 export { style }

@@ -1,4 +1,5 @@
 import { html } from '@polymer/lit-element'
+import uiCheckbox from '@foxford/ui/es/components/Checkbox/Checkbox.sass'
 
 import { cn } from '../utils'
 import style from '../atoms/checkbox.css'
@@ -11,7 +12,7 @@ export const checkbox = ({
   name = '',
   value = '',
 }) => (html`
-  <label class='checkbox root size-medium' for='${label}'>
+  <label class$='${cn('checkbox', uiCheckbox.root, uiCheckbox['size-medium'])}' for='${label}'>
     <input
       checked$='${checked}'
       class$='${cn('input', classname)}'
