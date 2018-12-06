@@ -12,6 +12,7 @@ import svg from 'rollup-plugin-svg'
 
 import { shouldUglify } from './rollup/util'
 import { directories } from './package.json'
+import { postcssLoader } from './rollup/loaders'
 
 const entry = process.env.ENTRY || 'index'
 const ns = process.env.NAMESPACE || 'WCPoll'
@@ -25,6 +26,23 @@ const css = () => postcss({
     cssfonts(),
     env(),
     autoprefixer(),
+  ],
+  loaders: [
+    {
+      name: 'postcss',
+      alwaysProcess: true,
+      test: /\.css/,
+      process (_) {
+        if (/\.s[ac]ss/.test(this.id)) {
+          this.options = {
+            ...this.options, modules: true,
+          }
+        }
+        // :up is crucial important to allow transpace .css and .s[ac]ss separately
+
+        return postcssLoader.process.call(this, _)
+      },
+    },
   ],
 })
 
