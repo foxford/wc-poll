@@ -10,7 +10,7 @@
   <script src="./public/node_modules/core-js/client/library.min.js"></script>
   <script src="./public/node_modules/core-js/client/shim.min.js"></script>
 
-  <script src="./dist/polyfill.js"></script>
+  <script src="./dist/polyfill.min.js"></script>
 
   <script type="text/javascript" src="./public/node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 
@@ -20,12 +20,13 @@
 
   <link href="./public/fonts.css" rel="stylesheet" />
 
-  <script src="./dist/dist.min.js"></script>
+  <script src="./dist/poll.min.js"></script>
 
   <script>
     window.onload = function onLoad(){
-      var mixins = window.WCPoll.mixins
       var Poll = window.WCPoll.Poll
+      var mixins = window.WCPoll.mixins
+      var utils = window.WCPoll.utils
 
       var pollData = {
         text: 'What\'s the largest desert in the World?',
@@ -57,12 +58,14 @@
       var pollData2 = Object.assign({}, pollData)
       pollData2.list = pollData2.list.map(it => { const next = Object.assign({}, it); next.name = `${next.name}_1`; next.label = `${next.label}_1`; return next })
 
-      var applyTo = mixins.combineMixins([
-        [mixins.withPoll, pollData]
+      var applyTo = utils.combineMixins([
+        [mixins.withPoll, pollData],
+        [mixins.withStyleLink, './dist/poll.min.css']
       ])
 
-      var applyToMultiple = mixins.combineMixins([
-        [mixins.withPoll, pollData2]
+      var applyToMultiple = utils.combineMixins([
+        [mixins.withPoll, pollData2],
+        [mixins.withStyleLink, './dist/poll.min.css']
       ])
 
       window.customElements.define('wc-poll', applyTo(Poll))
@@ -73,11 +76,11 @@
 <body>
   <div style="width:50%;">
     <h2>Poll</h2>
-    <wc-poll></wc-poll>
+    <wc-poll id="poll"></wc-poll>
   </div>
   <div style="width:50%;">
     <h2>Poll with multiple variants</h2>
-    <wc-poll-multiple multiple></wc-poll-multiple>
+    <wc-poll-multiple multiple id="poll-multiple"></wc-poll-multiple>
   </div>
 </body>
 </html>

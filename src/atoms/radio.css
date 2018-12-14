@@ -1,12 +1,13 @@
 :root {
-  --font-size: var(--wc-poll-font-size, initial);
-  --radio-color: var(--wc-poll-radio-color, var(--concrete, #333));
+  --font-size: initial;
+  --radio-color: #333;
 }
 
-.root.root {
+.radio.radio {
   align-items: normal;
-  color: var(--radio-color);
-  font-size: var(--font-size);
+  color: var(--wc-poll-radio-color, var(--concrete, var(--radio-color)));
+  font-size: var(--wc-poll-font-size, var(--font-size));
+  padding-top: 8px;
 }
 
 .label.label {
@@ -18,21 +19,21 @@ input[type="radio"] ~ svg {
   cursor: pointer;
   height: 20px;
   outline: none;
-  top: 0;
+  top: -2px;
   width: 20px;
 }
 
 /* redefine ui kit filling */
 
-.root.root svg:nth-child(2) path {
+.radio.radio svg:nth-child(2) path {
   fill: var(--white, #fff);
 }
 
-.root.root svg:nth-child(3) path {
+.radio.radio svg:nth-child(3) path {
   fill: var(--pictonBlue, #48a1e6);
 }
 
-.root.root svg:nth-child(3) path:last-child {
+.radio.radio svg:nth-child(3) path:last-child {
   fill: var(--white, #fff);
 }
 

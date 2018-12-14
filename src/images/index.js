@@ -1,4 +1,4 @@
-import { svg } from '@polymer/lit-element'
+import { html as svg } from '@polymer/lit-element'
 
 export const close = (svg`<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <rect width="16" height="16" fill="black" fill-opacity="0"/>

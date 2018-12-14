@@ -1,21 +1,16 @@
 import { html, LitElement } from '@polymer/lit-element'
-import enh from '@foxford/ui/es/enhancers/PadMarg/PadMarg.sass'
+import uiPadMarg from '@foxford/ui/es/enhancers/PadMarg/PadMarg.sass'
+import { withStyle } from '@netology-group/wc-utils'
 
-import { button } from '../atoms/button'
-import { checkbox } from '../atoms/checkbox'
 import { cn, getAll as _getAll } from '../utils'
-import { progress } from '../atoms/progress'
-import { radio } from '../atoms/radio'
 import pollImage from '../images/poll.svg'
-
+import { button, style as bstyle } from '../atoms/button'
+import { checkbox, style as cstyle } from '../atoms/checkbox'
+import { progress, style as pstyle } from '../atoms/progress'
+import { radio, style as rstyle } from '../atoms/radio'
 import { group } from '../atoms/poll.group'
 import { result } from '../atoms/poll.result'
-
-import * as mixins from '../utils/mixins'
-
-import css from './poll.css'
-
-export { mixins }
+import style from '../organisms/poll.css'
 
 export class PollElement extends LitElement {
   static get properties () {
@@ -108,11 +103,11 @@ export class PollElement extends LitElement {
   _renderVariant (data) {
     const variantEl = this.multiple ? checkbox : radio
 
-    return html`
-      <div class$=${cn(enh['margin-bottom-12'])} on-change=${this._boundVariantChange}>
+    return (html`
+      <div on-change='${this._boundVariantChange}'>
         ${variantEl(data)}
       </div>
-    `
+    `)
   }
 
   _renderResult (data) {
@@ -125,7 +120,7 @@ export class PollElement extends LitElement {
     return progress({
       active: data.winner,
       children: result(data),
-      classname: cn(enh['margin-bottom-12']),
+      classname: cn(uiPadMarg['margin-bottom-12']),
       selected: data.selected,
       width: data.value * 1e2,
     })
@@ -156,15 +151,17 @@ export class PollElement extends LitElement {
         children: [list.map(this._boundRenderResult), _button],
       })
 
-    return html`
-      <div class$=${css.root}>
-        <img class$=${css.image} src$=${pollImage} />
-        <section class$=${css.content}>
-          <div class$=${css.question}>${text}</div>
+    return (html`
+      <div class='poll'>
+        <img class='image' src$='${pollImage}' />
+        <section class='content'>
+          <div class='question'>${text}</div>
           ${poll}
         </section>
         ${children}
       </div>
-    `
+    `)
   }
 }
+
+export default withStyle(html)(PollElement, style, rstyle, pstyle, bstyle, cstyle)
